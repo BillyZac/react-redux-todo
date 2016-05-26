@@ -15,7 +15,8 @@ gulp.task('js', function() {
     entries: 'src/js/script.jsx'
   })
   .transform(babelify.configure({
-    presets: ['es2015', 'react']
+    presets: ['es2015', 'react'],
+    plugins: ["transform-es2015-spread"]
   }))
   .bundle()
   .on('error', function(error) {

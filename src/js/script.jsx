@@ -1,7 +1,22 @@
-console.log('hey!')
+import { createStore } from 'redux'
 
-import React from 'react'
-import { render } from 'react-dom'
-import Hello from './Hello'
+// TODO reducer
+const todo = (state, action) => {
+  switch(action.type) {
 
-render(<Hello />, document.getElementById('app'))
+    case 'ADD_TODO':
+      return {
+        id: action.id,
+        text: action.text,
+        completed: false
+      }
+
+    case 'TOGGLE_TODO':
+      if (state.id !== action.id) {
+        return state
+      }
+      return { ...state, completed: !state.completed }
+
+    default: return state
+  }
+}
